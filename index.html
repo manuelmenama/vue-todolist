@@ -38,7 +38,8 @@
             type="text"
             placeholder="New task here..."
             aria-label=".form-control-lg example"
-            v-model="newTaskString">
+            v-model.trim="newTaskString"
+            @keyup.enter="addTask()">
 
           </div>
 
@@ -57,9 +58,16 @@
 
           <ul class="list-group list-group-flush">
 
-            <li class="list-group-item d-none  list-group-item-action">Torna ad oziare...</li>
+            <li
+              class="list-group-item list-group-item-action d-flex align-items-center"
+              v-if="taskThings.length === 0">
+
+              <h5>Torna ad oziare...</h5>
+
+            </li>
     
             <li
+              v-else
               v-for="(task, index) in taskThings"
               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center my-pointer">
               <span
@@ -68,9 +76,12 @@
                 {{task.name}}
               </span>
               <span class="my-alert">{{task.errorMsg}}</span>
-              <i
-                class="fa-solid fa-delete-left"
-                @click="deleteTask(index)"></i>
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                @click="deleteTask(index)">
+                <i class="fa-solid fa-square-minus"></i>
+              </button>
             </li>
 
           </ul>

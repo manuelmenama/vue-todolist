@@ -34,12 +34,14 @@ createApp({
     deleteTask(index) {
       this.taskThings[index].errorMsg = '';
       if(!this.taskThings[index].taskDone){
-        this.taskThings[index].errorMsg = "Devi prima completare il task!"
+        this.taskThings[index].errorMsg = "Devi prima completare il task!";
       }else{
-        this.taskThings.splice(index, 1)
+        this.taskThings.splice(index, 1);
       }
     },
     addTask() {
+
+      //this.taskThings.find
       const newTask = {
         name: this.newTaskString,
         taskDone: false
