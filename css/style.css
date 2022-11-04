@@ -24,3 +24,12 @@ img{
 .done{
   text-decoration: line-through;
 }
+
+.my-pointer{
+  cursor: pointer;
+}
+
+.my-alert{
+  font-weight: bolder;
+  color: brown;
+}
