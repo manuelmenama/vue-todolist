@@ -9,6 +9,7 @@ createApp({
 
       indexCounter: 0,
       newTaskString: "",
+      generalError: "",
 
       taskThings: [
         {
@@ -40,15 +41,29 @@ createApp({
       }
     },
     addTask() {
+      this.generalError = '';
 
-      //this.taskThings.find
-      const newTask = {
-        name: this.newTaskString,
-        taskDone: false
+      const findDoubleTask = this.taskThings.find(({name}) => name === this.newTaskString)
+      console.log(this.findDoubleTask);
+
+      if(findDoubleTask) {
+        generalError = "Task gia presente!"
+      }else {
+        if(this.newTaskString.length < 5) {
+          this.generalError = "Inserire min. 5 caratteri";
+        }else {
+          const newTask = {
+            name: this.newTaskString,
+            taskDone: false
+          }
+          this.taskThings.unshift(newTask);
+          this.newTaskString = '';
+        }
       }
-      this.taskThings.unshift(newTask);
-      this.newTaskString = '';
-    }
+    },
+    // fuondTask(taskName) {
+    //   return taskName.name === this.newTaskString;
+    // }
   },
   mounted() {
     console.log("Mounted 'vue-carousel'");
