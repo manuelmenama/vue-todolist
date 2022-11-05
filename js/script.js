@@ -7,9 +7,9 @@ createApp({
   data() {
     return {
 
-      indexCounter: 0,
       newTaskString: "",
       generalError: "",
+      findDoubleTask: undefined,
 
       taskThings: [
         {
@@ -32,6 +32,7 @@ createApp({
     }
   },
   methods: {
+    //funzione per cancellare i task gia eseguiti
     deleteTask(index) {
       this.taskThings[index].errorMsg = '';
       if(!this.taskThings[index].taskDone){
@@ -40,14 +41,18 @@ createApp({
         this.taskThings.splice(index, 1);
       }
     },
+    //funzione per aggiungere task
     addTask() {
       this.generalError = '';
 
-      const findDoubleTask = this.taskThings.find(({name}) => name === this.newTaskString)
-      console.log(this.findDoubleTask);
+      //cerca prima dei task con lo stesso nome dell'array
+      findDoubleTask = this.taskThings.find((item) => item.name.toLowerCase().includes(this.newTaskString.toLowerCase()))
+      console.log(findDoubleTask);
 
+      //primo controllo dei task presenti e secondo della lunghezza
       if(findDoubleTask) {
-        generalError = "Task gia presente!"
+        this.generalError = "Task gia presente!";
+        this.newTaskString = "";
       }else {
         if(this.newTaskString.length < 5) {
           this.generalError = "Inserire min. 5 caratteri";
@@ -60,10 +65,7 @@ createApp({
           this.newTaskString = '';
         }
       }
-    },
-    // fuondTask(taskName) {
-    //   return taskName.name === this.newTaskString;
-    // }
+    }
   },
   mounted() {
     console.log("Mounted 'vue-carousel'");

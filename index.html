@@ -19,13 +19,13 @@
 
   <div id="app">
 
-    <div class="container d-flex justify-content-center">
+    <header class="container d-flex justify-content-center">
 
       <img class="logo" src="img/logo.png" alt="">
       
-    </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
 
       <div class="row">
         
@@ -33,6 +33,7 @@
           
           <div class="col-8">
 
+            <!-- il mio input contiene un keyup sul tasto enter -->
             <input
             class="form-control form-control-lg"
             type="text"
@@ -49,6 +50,7 @@
 
           <div class="col-2">
 
+            <!-- il button contiene fa scattare la funzione al click -->
             <button
             type="button"
             class="btn btn-primary btn-lg"
@@ -62,14 +64,16 @@
 
           <ul class="list-group list-group-flush">
 
+            <!-- tag li alternativo da mostrare se l'array è vuoto -->
             <li
-              class="list-group-item list-group-item-action d-flex align-items-center"
-              v-if="taskThings.length === 0">
-
+            class="list-group-item list-group-item-action d-flex align-items-center"
+            v-if="taskThings.length === 0">
+            
               <h5>Torna ad oziare...</h5>
-
+            
             </li>
-    
+          
+            <!-- stampo tante volte il tag li quanti sono gli elementi dell'array di oggetti -->
             <li
               v-else
               v-for="(task, index) in taskThings"
@@ -96,7 +100,7 @@
 
       </div>
 
-    </div>
+    </main>
 
   </div>
 

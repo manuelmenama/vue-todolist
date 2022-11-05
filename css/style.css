@@ -1,3 +1,4 @@
+/* general */
 body{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   background-color: lavender;
@@ -7,16 +8,13 @@ img{
   max-width: 100%;
 }
 
+/* header */
 .logo{
   width: 300px;
   padding: 20px;
 }
 
-.debug{
-  background-color: rgba(165, 42, 42, 0.267);
-  border: 1px solid black;
-}
-
+/* main */
 .my-bg-lavander{
   background-color:lavender;
 }
